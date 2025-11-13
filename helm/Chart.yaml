@@ -1,0 +1,6 @@
+apiVersion: v2                # Helm 3 chart API version
+name: mit-kerberos            # Chart name
+description: A Helm chart to deploy MIT Kerberos KDC and admin server
+type: application             # Application chart (vs library)
+version: 0.1.0                # Chart version
+appVersion: "latest"          # The version of the Docker image or app being deployed

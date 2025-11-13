@@ -1,0 +1,28 @@
+replicaCount: 1
+
+image:
+  repository: mazzolettin/mit-kerberos
+  tag: latest
+  pullPolicy: IfNotPresent
+
+service:
+  type: LoadBalancer
+  ports:
+    kdc: 88
+    admin: 749
+
+env:
+  REALM: MYREALM.COM
+  KDC_HOST_ADDRESS: localhost
+  ADMIN_PASSWORD: supersecret
+
+persistence:
+  enabled: true
+  size: 1Gi
+  mountPath: /var/lib/krb5kdc
+  storageClassName: ""
+
+secret:
+  useExisting: false       # true to use an external Secret
+  name: "ceph-corbo-cephfs"                 # name of the existing Secret
+  key: admin-password       # key in the external Secret containing ADMIN_PASSWORD

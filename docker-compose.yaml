@@ -1,0 +1,13 @@
+services:
+  mit-kerberos:
+    image: mazzolettin/mit-kerberos:latest  # Replace with your Docker Hub image or local name
+    container_name: mit-kerberos
+    environment:
+      REALM: MYREALM.COM
+      KDC_HOST_ADDRESS: localhost
+      ADMIN_PASSWORD: admin
+    ports:
+      - "88:88"       # KDC UDP/TCP
+      - "749:749"     # admin port
+    tty: true
+    stdin_open: true

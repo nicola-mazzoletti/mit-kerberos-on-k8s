@@ -1,0 +1,8 @@
+[libdefaults]
+    default_realm = $REALM
+
+[realms]
+    $REALM = {
+        kdc = $KDC_HOST_ADDRESS
+        admin_server = $KDC_HOST_ADDRESS
+    }

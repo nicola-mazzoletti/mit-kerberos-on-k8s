@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "mit-kerberos.fullname" . }}
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - name: kdc
+      port: {{ .Values.service.ports.kdc }}
+      targetPort: kdc
+    - name: admin
+      port: {{ .Values.service.ports.admin }}
+      targetPort: admin
+  selector:
+    app: {{ include "mit-kerberos.name" . }}
